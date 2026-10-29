@@ -45,9 +45,18 @@ const memberStories = [
   },
 ]
 
-function TrialLink({ children = 'Start My 7-Day Free Trial Now' }: { children?: string }) {
+function TrialLink({
+  children = 'Start My 7-Day Free Trial Now',
+  className = '',
+}: {
+  children?: string
+  className?: string
+}) {
   return (
-    <a className="trial-button" href={`${marketingBoost}/plan_listing`}>
+    <a
+      className={`trial-button${className ? ` ${className}` : ''}`}
+      href={`${marketingBoost}/plan_listing`}
+    >
       <span>{children}</span>
       <small>Then only $37 per month after</small>
     </a>
@@ -124,6 +133,7 @@ function HomePage() {
               Discover the 3-step secret weapon of the world&apos;s smartest
               marketers!
             </p>
+            <TrialLink className="hero-trial-button" />
           </div>
           <div className="hero-media">
             <HeroVideo />

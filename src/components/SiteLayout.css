@@ -89,7 +89,7 @@
 .brand-link {
   position: relative;
   z-index: 1;
-  top: -26px;
+  top: -29px;
   grid-column: 1;
   justify-self: center;
 }
@@ -219,11 +219,15 @@
   }
 
   .brand-link {
-    top: -21px;
+    top: -24px;
   }
 
   .brand-link img {
     width: 190px;
+  }
+
+  .primary-links {
+    top: -0.3125rem;
   }
 
   .primary-links a {
@@ -267,6 +271,8 @@
 
   .brand-link {
     top: -26.1px;
+    justify-self: start;
+    margin-left: 15px;
   }
 
   .brand-link img {
@@ -284,7 +290,8 @@
 
   .trial-button-header {
     min-height: 0;
-    top: -0.45px;
+    top: 0;
+    align-self: start;
     padding: 10px;
     font-size: 0.8125rem;
     line-height: 1.42857143;
