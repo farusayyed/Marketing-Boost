@@ -5,25 +5,68 @@ const marketingBoost = 'https://marketingboost.com'
 
 const steps = [
   {
-    number: '01',
-    title: 'Step 1: Stop undercutting yourself.',
-    description:
-      'Protect your pricing and make the value of your product or service easier to say yes to. A thoughtful bonus can take the place of another discount.',
-    accent: 'coral',
+    label: 'Step 1:',
+    title: 'Stop undercutting yourself.',
+    image: '/assets/img_Step01.jpg',
+    imageAlt: 'Two business people shaking hands after a meeting',
+    paragraphs: [
+      'All of those "don\'t tell anyone" discounts you\'ve been giving just to push prospects over the edge? Your customers are telling their friends about them. Same with all the incentives you pay for out of pocket, like expensive dinners and service enhancements.',
+      'Stick to your pricing and stop paying for extras. Otherwise, it becomes impossible to stop giving away all of your profits.',
+      'Every time you accept less money than you ask for, or pay for freebies out of your own pocket, it robs you of income you deserve to grow your business and secure your financial freedom.',
+      'That\'s exactly why countless business owners feel stuck - unable to break through their personal "income ceilings."',
+    ],
   },
   {
-    number: '02',
-    title: "Step 2: Offer a high-value incentive you don't personally have to fulfill.",
-    description:
-      'Give prospects something exciting to look forward to. MarketingBoost vacation certificates can complement offers across many kinds of businesses.',
-    accent: 'blue',
+    label: 'Step 2:',
+    title: "Offer a high-value incentive you don't personally have to fulfill.",
+    image: '/assets/img_Step02.jpg',
+    imageAlt: 'A couple relaxing on beach chairs beside a tropical sea',
+    reverse: true,
+    content: (
+      <>
+        <p>
+          Potential buyers are <em>heavily</em> influenced by bonuses, especially
+          high-value incentives that aren&apos;t available just anywhere.{' '}
+          <strong>After all, people love to be treated like royalty.</strong>
+        </p>
+        <div className="step2-callout">
+          <p>
+            No matter what kinds of products or services you sell, NOTHING
+            seduces a fence-sitter like throwing in a free vacation when they
+            say YES to your offer, upsell, or referral request.
+          </p>
+        </div>
+        <p className="step2-travel-copy">
+          Your products and services become irresistible when your prospects
+          start picturing themselves{' '}
+          <em>
+            relaxing on a sun-soaked beach... gazing at the endless neon of the
+            Vegas Strip... or sampling local cuisine at a picturesque Mexican
+            plaza
+          </em>{' '}
+          - all on someone else&apos;s dime.
+        </p>
+        <p className="step2-final-copy">
+          And being able to provide your new buyers with fantastic vacations
+          feels great too... especially{' '}
+          <strong>
+            since it&apos;s not <em>YOUR</em> dime.
+          </strong>{' '}
+          (It&apos;s ours.)
+        </p>
+      </>
+    ),
   },
   {
-    number: '03',
-    title: 'Step 3: Let us WOW your new clients and customers!',
-    description:
-      'Welcome new customers with a clear next step and a reward they can enjoy. Strong experiences can encourage repeat business and referrals.',
-    accent: 'green',
+    label: 'Step 3:',
+    title: 'Let us WOW your new clients and customers!',
+    image: '/assets/img_Step3.jpg',
+    imageAlt: 'Two women enjoying a meal together',
+    paragraphs: [
+      'Welcome new customers with a vacation certificate as part of your customer appreciation experience.',
+      'Customers can review the certificate details and applicable terms as they activate and redeem their reward.',
+      'A thoughtful welcome can help make the experience of doing business with you memorable.',
+    ],
   },
 ]
 
@@ -148,29 +191,29 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="steps-section section-space" id="features">
-        <div className="content-width">
-          <div className="section-heading">
-            <p className="eyebrow">A simple approach</p>
-            <h2>Turn a stronger offer into a better customer experience</h2>
-            <p>
-              Three practical steps help you protect your value while creating
-              more reasons for customers to choose you.
-            </p>
-          </div>
-          <div className="steps-grid">
-            {steps.map((step) => (
-              <article
-                className={`step-card step-card-${step.accent}`}
-                key={step.number}
-              >
-                <span className="step-number">{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
+      <section className="steps-section" id="features">
+        {steps.map((step) => (
+          <article
+            className={`step-row${step.reverse ? ' step-row-reverse' : ''}`}
+            key={step.label}
+          >
+            <div className="step-inner">
+              <div className="step-image">
+                <img src={step.image} alt={step.imageAlt} />
+              </div>
+              <div className="step-copy">
+                <h2>
+                  <span>{step.label}</span> {step.title}
+                </h2>
+                {'content' in step
+                  ? step.content
+                  : step.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+              </div>
+            </div>
+          </article>
+        ))}
       </section>
 
       <section className="mid-cta">

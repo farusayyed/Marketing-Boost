@@ -274,65 +274,137 @@
 .steps-section {
   position: relative;
   margin-top: -400px;
+}
+
+.step-row {
+  padding: 55px 0 45px;
+  background: #fff;
+}
+
+.step-row:first-child {
+  padding-top: 0;
   background: transparent;
 }
 
-.steps-grid {
+.step-row-reverse {
+  background: #f2f2f2;
+}
+
+.step-inner {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.35rem;
+  width: min(1140px, calc(100% - 60px));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  margin-inline: auto;
 }
 
-.step-card {
-  position: relative;
-  min-height: 16rem;
-  padding: 2rem 1.8rem;
-  border: 1px solid #e6edf2;
-  border-top: 0.3rem solid #2879b6;
-  border-radius: 0.5rem;
-  background: #fff;
-  box-shadow: 0 0.75rem 2rem rgb(35 68 98 / 5%);
+.step-row-reverse .step-image {
+  grid-column: 2;
+  grid-row: 1;
 }
 
-.step-card-coral {
-  border-top-color: #ef785f;
+.step-row-reverse .step-copy {
+  grid-column: 1;
+  grid-row: 1;
 }
 
-.step-card-green {
-  border-top-color: #4cab7b;
+.step-row-reverse .step-image img {
+  box-shadow: none;
 }
 
-.step-number {
-  display: inline-flex;
-  width: 2.6rem;
-  aspect-ratio: 1;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #e9f4fb;
+.step-image,
+.step-copy {
+  min-width: 0;
+  padding-inline: 15px;
+}
+
+.step-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow:
+    rgba(40, 43, 43, 0.18) 0 15px 17px -5px,
+    rgba(40, 43, 43, 0.18) -24px 20px 46px 14px;
+}
+
+.step-copy {
+  align-self: start;
+}
+
+.step-copy h2 {
+  margin: 0 0 1.35rem;
+  color: #231f20;
+  font-family: Montserrat-ExtraBold, Arial, sans-serif;
+  font-size: clamp(1.625rem, 2.85vw, 2.1875rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.step-copy h2 span {
   color: #2879b6;
-  font-size: 0.88rem;
-  font-weight: 800;
 }
 
-.step-card-coral .step-number {
-  background: #fff0ec;
-  color: #dc644c;
+@font-face {
+  font-family: Montserrat-Light;
+  src: url("/assets/fonts/Montserrat-Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
-.step-card-green .step-number {
-  background: #eaf7f0;
-  color: #368b60;
+.step-copy p {
+  margin: 0 0 0.9rem;
+  color: #231f20;
+  font-family: Montserrat-Regular, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.42857143;
 }
 
-.step-card h3 {
-  margin: 1.15rem 0 0.6rem;
-  color: #1d2733;
-  font-size: 1.35rem;
-  line-height: 1.25;
+.step-row:first-child .step-copy p {
+  margin-bottom: 0;
+  font-family: Montserrat-Light, Arial, sans-serif;
 }
 
-.step-card p,
+.step-row:first-child .step-copy p:not(:last-child) {
+  margin-bottom: 1.675rem;
+}
+
+.step-row-reverse .step-copy > p {
+  margin: 0;
+  padding: 0 0 25px;
+  color: #231f20;
+  font-family: Montserrat-Light, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.42857143;
+}
+
+.step-row-reverse .step-copy strong {
+  font-family: Montserrat-Bold, Arial, sans-serif;
+}
+
+.step-row-reverse .step2-callout {
+  border-radius: 8px;
+  background: #2777bc;
+}
+
+.step-row-reverse .step2-callout p {
+  margin: 0;
+  padding: 25px 75px 20px 45px;
+  color: #fff;
+  font-family: Montserrat-Light, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.42857143;
+}
+
+.step-row-reverse .step-copy > .step2-travel-copy {
+  padding-top: 30px;
+}
+
+.step-row-reverse .step2-travel-copy em {
+  font-style: italic;
+  font-synthesis: style;
+}
+
 .why-copy > p:not(.eyebrow),
 .story-card-copy > p:not(.eyebrow),
 .who-pays-copy > p:not(.eyebrow),
@@ -665,7 +737,7 @@
   border-radius: 55% 55% 0 0;
   background: #f1e4c8;
   box-shadow: inset 0 -1rem #c98658;
-  content: '';
+  content: "";
 }
 
 .resort-placeholder::before {
@@ -798,14 +870,6 @@
 }
 
 @media (max-width: 58rem) {
-  .steps-grid {
-    gap: 0.85rem;
-  }
-
-  .step-card {
-    padding: 1.5rem 1.25rem;
-  }
-
   .why-grid,
   .who-pays-grid,
   .audience-grid {
@@ -899,6 +963,35 @@
     margin-top: 0;
   }
 
+  .step-row {
+    padding-block: 2.5rem;
+  }
+
+  .step-inner {
+    width: calc(100% - 30px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step-row-reverse .step-copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .step-row-reverse .step-image {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .step-copy h2 {
+    font-size: clamp(1.35rem, 4.55vw, 1.8rem);
+  }
+
+  .step-copy p {
+    font-size: 1rem;
+    line-height: 1.42857143;
+  }
+
   .hero-heading {
     grid-column: 1;
     grid-row: 1;
@@ -964,14 +1057,8 @@
     width: min(100% - 2rem, 75rem);
   }
 
-  .steps-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
-  }
-
-  .step-card {
-    min-height: auto;
-    padding: 1.5rem;
   }
 
   .mid-cta-inner {
